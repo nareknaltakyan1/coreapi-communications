@@ -84,7 +84,20 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.nnaltakyan.api</groupId>
+			<artifactId>coreapi-common-lib</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>coreapi-common-lib</id>
+			<name>GitHub nareknaltakyan1 Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/nareknaltakyan1/coreapi-common-lib</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<plugins>
