@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:12
+    networks:
+      - db-network
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=S0m3h@rdPass!
+    volumes:
+      - ./.docker/setup-postgres.sql:/docker-entrypoint-initdb.d/setup.sql
+  coreapi-comunications:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8091:8091"
+    environment:
+      - DB_HOST=db
+    networks:
+      - db-network
+    depends_on:
+      - db
+networks:
+  db-network:
+    driver: bridge
