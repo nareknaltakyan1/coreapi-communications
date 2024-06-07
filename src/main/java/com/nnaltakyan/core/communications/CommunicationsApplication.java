@@ -18,6 +18,6 @@ public class CommunicationsApplication
 	@PostConstruct
 	public void afterStart()
 	{
-		log.debug("Application started");
+		log.debug("Communications Application started");
 	}
 }
