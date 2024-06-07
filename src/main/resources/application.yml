@@ -1,11 +1,15 @@
 spring:
+
   application:
     name: coreapi-communications
+
   main:
     allow-circular-references: true
+
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_DB:coreapi_communications}
     username: ${DB_USER:coreapi_communications}
@@ -13,6 +17,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     hikari:
       max-lifetime: 580000
+
   jpa:
     show-sql: false
     hibernate:
@@ -24,6 +29,17 @@ spring:
           plan_cache_max_size: 64
           in_clause_parameter_padding: true
     open-in-view: false
+
   flyway:
     baseline-on-migrate: true
     placeholder-prefix: $$
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    properties:
+      zookeeper.connect: localhost:2181
