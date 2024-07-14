@@ -52,4 +52,8 @@ public class SentEmail extends BaseEntity
 	@NotNull
 	@Column(nullable = true)
 	private Instant sent;
+
+	@Column
+	@Enumerated(EnumType.STRING)
+	private EmailSentStatus status = EmailSentStatus.PENDING;
 }
