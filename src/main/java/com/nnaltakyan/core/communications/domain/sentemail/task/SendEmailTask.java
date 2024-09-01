@@ -20,7 +20,7 @@ public class SendEmailTask {
     private final EmailService emailService;
     private final int pageSize;
 
-    public SendEmailTask(final SentEmailService sentEmailService, EmailService emailService,
+    public SendEmailTask(final SentEmailService sentEmailService, final EmailService emailService,
                          @Value("${internal.tasks.send-email.page-size}") final int pageSize)
     {
         this.sentEmailService = sentEmailService;
@@ -45,7 +45,6 @@ public class SendEmailTask {
                     catch (final RuntimeException ex){
                         log.error("Unexpected exception while sending email {}", email.getId(), ex);
                     }
-
                 }
         );
         log.debug("Finished sending emails");
