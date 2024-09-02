@@ -5,7 +5,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;;
 
 import java.time.Instant;
 
@@ -52,4 +56,8 @@ public class SentEmail extends BaseEntity
 	@NotNull
 	@Column(nullable = true)
 	private Instant sent;
+
+	@ColumnDefault(value = "PENDING")
+	@Enumerated(EnumType.STRING)
+	private EmailSentStatus status;
 }
